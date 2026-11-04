@@ -45,13 +45,13 @@ class Console:
 
     def card(self, title, lines, accent="96"):
         print()
-        print(self.tint("┌" + "─" * WIDTH + "┐", accent))
-        for text in [title, "─" * (WIDTH - 4), *lines]:
+        print(self.tint("+" + "-" * WIDTH + "+", accent))
+        for text in [title, "-" * (WIDTH - 4), *lines]:
             for line in wrapped(text):
                 padding = " " * (WIDTH - 4 - text_width(line))
-                print(self.tint("│", accent) + f"  {line}{padding}  " + self.tint("│", accent))
-        print(self.tint("└" + "─" * WIDTH + "┘", accent))
+                print(self.tint("|", accent) + f"  {line}{padding}  " + self.tint("|", accent))
+        print(self.tint("+" + "-" * WIDTH + "+", accent))
 
     def progress(self, current, total):
         filled = current * 20 // total
-        return "[" + "#" * filled + "·" * (20 - filled) + f"] {current}/{total}"
+        return "[" + "#" * filled + "." * (20 - filled) + f"] {current}/{total}"

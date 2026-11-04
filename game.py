@@ -48,6 +48,14 @@ class QuizGame:
     def save(self):
         pass
 
+    def list_quizzes(self):
+        print(f"\n=== 퀴즈 목록 ({len(self.quizzes)}개) ===")
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다.")
+        for index, quiz in enumerate(self.quizzes, 1):
+            print(f"\n[{index}]")
+            quiz.display()
+
     def run(self):
         try:
             while True:
@@ -59,6 +67,8 @@ class QuizGame:
                     self.play()
                 elif choice == 2:
                     self.add_quiz()
+                elif choice == 3:
+                    self.list_quizzes()
                 else:
                     print("기능 준비 중입니다.")
         except (KeyboardInterrupt, EOFError):

@@ -24,7 +24,7 @@ class StateStore:
             best = data["best_score"]
             played = data["games_played"]
             if (type(best) is not int or type(played) is not int
-                    or best < 0 or played < 0 or best > len(quizzes)
+                    or best < 0 or played < 0
                     or (played == 0 and best != 0)):
                 raise ValueError("잘못된 점수 데이터")
             previous_sets = [legacy_default_quizzes(), party_default_quizzes()]

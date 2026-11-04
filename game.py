@@ -22,6 +22,7 @@ class QuizGame:
             "[3] 여행 지도      어떤 시대가 기다릴까?",
             "[4] 나의 기록      최고 점수와 도전 횟수",
             "[5] 여행 마치기    다음 시간 여행을 기약하며",
+            "[6] 문제 삭제      필요 없는 문제를 골라 정리",
         ])
         print("  번호를 고르고 Enter를 눌러주세요.")
 
@@ -103,6 +104,32 @@ class QuizGame:
     def save(self):
         return self.store.save(self.quizzes, self.best_score, self.games_played)
 
+    def delete_quiz(self):
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다. 삭제할 문제가 없습니다.")
+            return
+        self.console.card("QUIZ EDITOR  /  문제 삭제", [
+            *[f"[{i}] {quiz.question}" for i, quiz in enumerate(self.quizzes, 1)],
+            "", "삭제할 문제 번호를 선택하세요. [0] 취소",
+        ], "93")
+        number = read_number("  삭제할 문제 번호 > ", 0, len(self.quizzes))
+        if number == 0:
+            print("문제 삭제를 취소했습니다.")
+            return
+        quiz = self.quizzes[number - 1]
+        self.console.card("DELETE?  /  삭제 확인", [
+            quiz.question, "", "이 문제를 삭제할까요? [1] 삭제  [2] 취소",
+            "이전 최고 점수는 유지됩니다.",
+        ], "93")
+        if read_number("  확인 > ", 1, 2) == 2:
+            print("문제 삭제를 취소했습니다.")
+            return
+        self.quizzes.pop(number - 1)
+        if self.save():
+            print("문제가 삭제되고 파일에 저장되었습니다.")
+        else:
+            print("문제는 삭제되었지만 파일 저장은 실패했습니다. 종료 시 다시 저장합니다.")
+
     def list_quizzes(self):
         self.console.card(f"QUIZ COLLECTION  /  퀴즈 목록 ({len(self.quizzes)}개)", [
             "정답은 도전하기에서 공개! 마음에 드는 문제를 찾아보세요.",
@@ -117,7 +144,7 @@ class QuizGame:
         try:
             while True:
                 self.show_menu()
-                choice = read_number("메뉴 선택 > ", 1, 5)
+                choice = read_number("메뉴 선택 > ", 1, 6)
                 if choice == 5:
                     break
                 if choice == 1:
@@ -128,6 +155,8 @@ class QuizGame:
                     self.list_quizzes()
                 elif choice == 4:
                     self.show_score()
+                elif choice == 6:
+                    self.delete_quiz()
         except (KeyboardInterrupt, EOFError):
             print("\n입력이 중단되었습니다. 안전하게 종료합니다.")
         finally:

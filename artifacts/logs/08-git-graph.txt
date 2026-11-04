@@ -1,4 +1,8 @@
 $ git log --oneline --graph --all
+* 6f957b7 Fix: 한글 콘솔 글꼴에서도 일정한 카드 폭 유지
+* 2e1c952 Fix: 한글 고정폭 글꼴로 실행 캡처 테두리 정렬 개선
+* 14f70b2 Feat: 세계사 타임투어 퀴즈와 카드형 콘솔 화면 구현
+* 6c626fb Docs: 실행 화면 13개와 테스트 및 Git 실습 증빙 저장
 * 92dbfb0 Fix: 증빙 실행 방식과 Git 그래프 명령 표시 명확화
 * 16fc1d8 Fix: Windows PowerShell 캡처의 한글 인코딩과 선택 표시 수정
 * 271557b Docs: 복제한 저장소에서 Git 동기화 실습 기록 추가

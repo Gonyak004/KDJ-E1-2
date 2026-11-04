@@ -1,15 +1,14 @@
 """퀴즈 게임의 메뉴와 실행 흐름."""
 
 from inputs import read_number, read_text
-from defaults import default_quizzes
 from quiz import Quiz
+from storage import StateStore
 
 
 class QuizGame:
-    def __init__(self):
-        self.quizzes = default_quizzes()
-        self.best_score = 0
-        self.games_played = 0
+    def __init__(self, state_path=None):
+        self.store = StateStore() if state_path is None else StateStore(state_path)
+        self.quizzes, self.best_score, self.games_played = self.store.load()
 
     def show_menu(self):
         print("\n=== Python 기초 퀴즈 ===")
@@ -52,11 +51,13 @@ class QuizGame:
         choices = [read_text(f"선택지 {i} > ") for i in range(1, 5)]
         answer = read_number("정답 번호 > ", 1, 4)
         self.quizzes.append(Quiz(question, choices, answer))
-        self.save()
-        print("퀴즈가 등록되었습니다.")
+        if self.save():
+            print("퀴즈가 등록되고 파일에 저장되었습니다.")
+        else:
+            print("퀴즈가 등록되었지만 파일 저장은 실패했습니다.")
 
     def save(self):
-        pass
+        return self.store.save(self.quizzes, self.best_score, self.games_played)
 
     def list_quizzes(self):
         print(f"\n=== 퀴즈 목록 ({len(self.quizzes)}개) ===")
@@ -83,4 +84,6 @@ class QuizGame:
                     self.show_score()
         except (KeyboardInterrupt, EOFError):
             print("\n입력이 중단되었습니다. 안전하게 종료합니다.")
+        finally:
+            self.save()
         print("게임을 종료합니다.")

@@ -2,13 +2,18 @@ $ C:\Users\User\AppData\Local\Python\pythoncore-3.15-64\python.exe -m unittest d
 
 test_add_and_restart (test_game.GameTests.test_add_and_restart) ... ok
 test_atomic_write_keeps_previous_data_on_failure (test_game.GameTests.test_atomic_write_keeps_previous_data_on_failure) ... ok
+test_card_wraps_long_korean_text (test_game.GameTests.test_card_wraps_long_korean_text) ... ok
 test_corrupt_and_invalid_state (test_game.GameTests.test_corrupt_and_invalid_state) ... ok
 test_default_questions (test_game.GameTests.test_default_questions) ... ok
 test_empty_quizzes (test_game.GameTests.test_empty_quizzes) ... ok
+test_failed_migration_backup_keeps_previous_game (test_game.GameTests.test_failed_migration_backup_keeps_previous_game) ... ok
+test_history_theme_keeps_existing_history_score (test_game.GameTests.test_history_theme_keeps_existing_history_score) ... ok
 test_interrupted_inputs_save (test_game.GameTests.test_interrupted_inputs_save) ... ok
 test_invalid_encoding (test_game.GameTests.test_invalid_encoding) ... ok
+test_legacy_theme_migration_preserves_custom_quiz_and_backup (test_game.GameTests.test_legacy_theme_migration_preserves_custom_quiz_and_backup) ... ok
 test_number_retries_and_trims (test_game.GameTests.test_number_retries_and_trims) ... ok
 test_partial_registration_is_not_added (test_game.GameTests.test_partial_registration_is_not_added) ... ok
+test_party_quizzes_migrate_to_history (test_game.GameTests.test_party_quizzes_migrate_to_history) ... ok
 test_quiz_validation (test_game.GameTests.test_quiz_validation) ... ok
 test_read_and_write_errors (test_game.GameTests.test_read_and_write_errors) ... ok
 test_score_before_playing (test_game.GameTests.test_score_before_playing) ... ok
@@ -16,6 +21,6 @@ test_score_persistence_and_lower_score (test_game.GameTests.test_score_persisten
 test_wrong_answers (test_game.GameTests.test_wrong_answers) ... ok
 
 ----------------------------------------------------------------------
-Ran 14 tests in 0.043s
+Ran 19 tests in 0.086s
 
 OK

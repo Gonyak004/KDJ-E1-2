@@ -95,7 +95,7 @@ class GameTests(unittest.TestCase):
 
     def test_corrupt_and_invalid_state(self):
         invalid = ["{", "[]", '{"quizzes":[],"best_score":true,"games_played":0}',
-                   '{"quizzes":[],"best_score":1,"games_played":1}',
+                   '{"quizzes":[],"best_score":-1,"games_played":1}',
                    '{"quizzes":[{}],"best_score":0,"games_played":0}']
         for content in invalid:
             with self.subTest(content=content):
@@ -168,6 +168,40 @@ class GameTests(unittest.TestCase):
         console.card("긴 문제", ["가나다라마바사" * 30, "한글과 English 함께"])
         lines = self.output.getvalue().strip().splitlines()
         self.assertTrue(all(text_width(line) == 64 for line in lines))
+
+    def test_delete_persists_and_preserves_historical_score(self):
+        game = self.game()
+        game.record_score(7)
+        removed = game.quizzes[0].question
+        with patch("builtins.input", side_effect=["abc", "9", " 1 ", "0", "1"]):
+            game.delete_quiz()
+        restored = self.game()
+        self.assertEqual(len(restored.quizzes), 6)
+        self.assertNotIn(removed, [q.question for q in restored.quizzes])
+        self.assertEqual(restored.best_score, 7)
+
+    def test_delete_can_cancel_at_both_steps(self):
+        game = self.game()
+        for answers in [["0"], ["1", "2"]]:
+            with patch("builtins.input", side_effect=answers):
+                game.delete_quiz()
+            self.assertEqual(len(game.quizzes), 7)
+
+    def test_delete_last_question_and_empty_list(self):
+        game = self.game()
+        game.quizzes = game.quizzes[:1]
+        game.record_score(1)
+        with patch("builtins.input", side_effect=["6", "1", "1", "6", "5"]):
+            game.run()
+        restored = self.game()
+        self.assertEqual(restored.quizzes, [])
+        self.assertEqual(restored.best_score, 1)
+
+    def test_interrupt_delete_confirmation_keeps_question(self):
+        game = self.game()
+        with patch("builtins.input", side_effect=["6", "1", KeyboardInterrupt]):
+            game.run()
+        self.assertEqual(len(self.game().quizzes), 7)
 
 
 if __name__ == "__main__":

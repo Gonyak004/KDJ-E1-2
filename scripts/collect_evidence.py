@@ -50,6 +50,8 @@ def main():
         session("03-list-restart", state, ["3", "5"])
         session("04-play", state, ["1", "2", "3", "1", "4", "2", "3", "1", "2", "5"])
         session("05-score-restart", state, ["4", "5"])
+        session("10-delete-quiz", state, ["6", "8", "1", "5"])
+        session("11-list-after-delete", state, ["3", "4", "5"])
         (LOGS / "sample-state.json").write_bytes(state.read_bytes())
     command_log("06-environment", [[sys.executable, "--version"], ["git", "--version"],
                 ["git", "config", "--local", "user.name"],

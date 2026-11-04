@@ -26,7 +26,7 @@ def session(name, state, answers):
         return answer
 
     with contextlib.redirect_stdout(stream), patch("builtins.input", side_effect=entered):
-        print("$ py main.py  [각 세션은 같은 임시 state.json을 사용하는 실제 게임 실행]")
+        print("실행: QuizGame(임시 state.json).run() [실제 게임에 입력 시나리오 자동 재현]")
         QuizGame(state).run()
     (LOGS / f"{name}.txt").write_text(stream.getvalue(), encoding="utf-8")
 
@@ -55,7 +55,7 @@ def main():
                 ["git", "config", "--local", "user.name"],
                 ["git", "config", "--local", "user.email"], ["git", "remote", "-v"]])
     command_log("07-tests", [[sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"]])
-    command_log("08-git-graph", [["git", "log", "--oneline", "--graph", "--exclude=refs/original/*", "--all"]])
+    command_log("08-git-graph", [["git", "log", "--oneline", "--graph", "--all"]])
     print(f"실행 원문 로그 저장: {LOGS}")
 
 

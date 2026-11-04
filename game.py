@@ -34,7 +34,17 @@ class QuizGame:
 
     def record_score(self, score):
         self.games_played += 1
+        if score > self.best_score:
+            print("최고 점수를 갱신했습니다!")
         self.best_score = max(self.best_score, score)
+        self.save()
+
+    def show_score(self):
+        print("\n=== 점수 확인 ===")
+        if self.games_played == 0:
+            print("아직 퀴즈를 풀지 않았습니다.")
+        else:
+            print(f"최고 점수: {self.best_score}문제 정답 / 완료한 게임: {self.games_played}회")
 
     def add_quiz(self):
         print("\n=== 퀴즈 추가 ===")
@@ -69,8 +79,8 @@ class QuizGame:
                     self.add_quiz()
                 elif choice == 3:
                     self.list_quizzes()
-                else:
-                    print("기능 준비 중입니다.")
+                elif choice == 4:
+                    self.show_score()
         except (KeyboardInterrupt, EOFError):
             print("\n입력이 중단되었습니다. 안전하게 종료합니다.")
         print("게임을 종료합니다.")

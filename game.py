@@ -1,7 +1,8 @@
 """퀴즈 게임의 메뉴와 실행 흐름."""
 
-from inputs import read_number
+from inputs import read_number, read_text
 from defaults import default_quizzes
+from quiz import Quiz
 
 
 class QuizGame:
@@ -35,6 +36,18 @@ class QuizGame:
         self.games_played += 1
         self.best_score = max(self.best_score, score)
 
+    def add_quiz(self):
+        print("\n=== 퀴즈 추가 ===")
+        question = read_text("문제 > ")
+        choices = [read_text(f"선택지 {i} > ") for i in range(1, 5)]
+        answer = read_number("정답 번호 > ", 1, 4)
+        self.quizzes.append(Quiz(question, choices, answer))
+        self.save()
+        print("퀴즈가 등록되었습니다.")
+
+    def save(self):
+        pass
+
     def run(self):
         try:
             while True:
@@ -44,6 +57,8 @@ class QuizGame:
                     break
                 if choice == 1:
                     self.play()
+                elif choice == 2:
+                    self.add_quiz()
                 else:
                     print("기능 준비 중입니다.")
         except (KeyboardInterrupt, EOFError):

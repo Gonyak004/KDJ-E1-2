@@ -1,4 +1,4 @@
-param([string]$ProjectRoot = (Split-Path $PSScriptRoot -Parent))
+﻿param([string]$ProjectRoot = (Split-Path $PSScriptRoot -Parent))
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -37,6 +37,7 @@ foreach ($file in (Get-ChildItem -LiteralPath $logPath -Filter '*.txt' | Sort-Ob
         $form.Controls.Add($label)
         $form.Controls.Add($box)
         $form.Show()
+        $box.Select(0, 0)
         $form.Refresh()
         [System.Windows.Forms.Application]::DoEvents()
         $bitmap = New-Object System.Drawing.Bitmap($form.Width, $form.Height)

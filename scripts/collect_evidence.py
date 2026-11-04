@@ -45,8 +45,8 @@ def main():
     with tempfile.TemporaryDirectory() as directory:
         state = Path(directory) / "state.json"
         session("01-menu-validation", state, ["", "abc", "9", " 4 ", "5"])
-        session("02-add-quiz", state, ["2", "Python에서 화면에 값을 출력하는 함수는?",
-                "print()", "input()", "len()", "int()", "0", " 1 ", "5"])
+        session("02-add-quiz", state, ["2", "고대 올림픽이 시작된 문명은?",
+                "고대 그리스", "고대 이집트", "메소포타미아", "인더스 문명", "0", " 1 ", "5"])
         session("03-list-restart", state, ["3", "5"])
         session("04-play", state, ["1", "2", "3", "1", "4", "2", "3", "1", "2", "5"])
         session("05-score-restart", state, ["4", "5"])

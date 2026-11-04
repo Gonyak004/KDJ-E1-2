@@ -1,10 +1,11 @@
 """UTF-8 JSON 읽기 및 원자적 저장. 손상된 원본은 별도 보존한다."""
 
 import json
+import shutil
 from datetime import datetime
 from pathlib import Path
 
-from defaults import default_quizzes
+from defaults import default_quizzes, legacy_default_quizzes, party_default_quizzes
 from quiz import Quiz
 
 STATE_PATH = Path(__file__).resolve().parent / "state.json"
@@ -26,6 +27,20 @@ class StateStore:
                     or best < 0 or played < 0 or best > len(quizzes)
                     or (played == 0 and best != 0)):
                 raise ValueError("잘못된 점수 데이터")
+            previous_sets = [legacy_default_quizzes(), party_default_quizzes()]
+            legacy = next((items for items in previous_sets
+                           if [q.to_dict() for q in quizzes[:len(items)]] == [q.to_dict() for q in items]), None)
+            if legacy is not None:
+                backup = self.path.with_name(f"state.before-theme-{datetime.now():%Y%m%d-%H%M%S-%f}.json")
+                try:
+                    shutil.copy2(self.path, backup)
+                except OSError as error:
+                    print(f"이전 기록을 백업하지 못해 기존 문제를 유지합니다: {error}")
+                else:
+                    print("세계사 타임투어로 새 단장! 직접 추가한 문제는 그대로 유지합니다.")
+                    print(f"이전 문제와 점수 백업: {backup.name}")
+                    print("새 테마의 최고 점수는 0부터 시작합니다.")
+                    return default_quizzes() + quizzes[len(legacy):], 0, 0
             return quizzes, best, played
         except FileNotFoundError:
             print("저장 파일이 없어 기본 퀴즈로 시작합니다.")

@@ -4,5 +4,7 @@ __pycache__/
 state.json
 state.json.tmp
 state.corrupt*.json
+state.before-party-*.json
+state.before-theme-*.json
 practice-clone/
 artifacts/work/

@@ -1,0 +1,19 @@
+$ git log --oneline --graph --all
+* 92dbfb0 Fix: 증빙 실행 방식과 Git 그래프 명령 표시 명확화
+* 16fc1d8 Fix: Windows PowerShell 캡처의 한글 인코딩과 선택 표시 수정
+* 271557b Docs: 복제한 저장소에서 Git 동기화 실습 기록 추가
+* c3fb7a5 Chore: 재현 가능한 실행 증빙 수집 및 화면 캡처 도구 추가
+* 4cf2e4d Test: 영속성 및 예외 복구와 입력 검증 14개 테스트 추가
+* 6e66d0e Feat: UTF-8 JSON 저장과 손상 데이터 복구 및 안전 종료 구현
+* 2e267cc Feat: 최고 정답 수 갱신과 미플레이 점수 안내 구현
+* 542c86c Feat: 퀴즈 목록과 빈 목록 안내 구현
+* f346d57 Feat: 입력 검증을 적용한 퀴즈 등록 구현
+*   d2b5368 Merge: 퀴즈 풀이 기능 브랜치 병합
+|\  
+| * 2d1572a Feat: 퀴즈 출제와 정오답 안내 및 결과 표시 구현
+|/  
+* 2068d8e Feat: 게임 메뉴와 Python 기초 기본 퀴즈 7개 추가
+* f00a04c Feat: Quiz 클래스와 문제 데이터 검증 구현
+* 0ad576e Feat: 실행 진입점 연결과 공통 입력 검증 구현
+* 9c99ead Chore: Python 콘솔 퀴즈 프로젝트 초기 설정
+

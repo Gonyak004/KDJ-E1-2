@@ -1,0 +1,27 @@
+Git clone / push / pull 실제 실행 기록
+원격 주소: https://github.com/Gonyak004/KDJ-E1-2
+
+$ git clone https://github.com/Gonyak004/KDJ-E1-2 practice-clone
+Cloning into 'practice-clone'...
+
+$ git -C practice-clone commit -m "Docs: 복제한 저장소에서 Git 동기화 실습 기록 추가"
+[main 271557b] Docs: 복제한 저장소에서 Git 동기화 실습 기록 추가
+1 file changed, 11 insertions(+)
+create mode 100644 docs/git-practice.txt
+
+$ git -C practice-clone push origin main
+To https://github.com/Gonyak004/KDJ-E1-2
+   c3fb7a5..271557b  main -> main
+
+$ git pull --ff-only origin main
+From https://github.com/Gonyak004/KDJ-E1-2
+Updating c3fb7a5..271557b
+Fast-forward
+docs/git-practice.txt | 11 +++++++++++
+1 file changed, 11 insertions(+)
+create mode 100644 docs/git-practice.txt
+
+$ git rev-parse HEAD
+271557b2a773e78c26f8ba1eebd6d9c2922fe93d
+$ git -C practice-clone rev-parse HEAD
+271557b2a773e78c26f8ba1eebd6d9c2922fe93d

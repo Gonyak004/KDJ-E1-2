@@ -1,0 +1,20 @@
+$ C:\Users\User\AppData\Local\Python\pythoncore-3.15-64\python.exe --version
+Python 3.15.2
+
+
+$ git --version
+git version 2.56.0.windows.4
+
+
+$ git config --local user.name
+Gonyak004
+
+
+$ git config --local user.email
+Gonyak004@users.noreply.github.com
+
+
+$ git remote -v
+origin	https://github.com/Gonyak004/KDJ-E1-2 (fetch)
+origin	https://github.com/Gonyak004/KDJ-E1-2 (push)
+

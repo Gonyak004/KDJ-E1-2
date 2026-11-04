@@ -1,0 +1,86 @@
+{
+  "quizzes": [
+    {
+      "question": "Python에서 정수를 나타내는 자료형은?",
+      "choices": [
+        "str",
+        "int",
+        "list",
+        "dict"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "순서가 있는 여러 값을 저장하는 자료형은?",
+      "choices": [
+        "bool",
+        "int",
+        "list",
+        "float"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "조건에 따라 실행할 코드를 나누는 키워드는?",
+      "choices": [
+        "if",
+        "import",
+        "return",
+        "class"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "함수를 정의할 때 사용하는 키워드는?",
+      "choices": [
+        "for",
+        "while",
+        "try",
+        "def"
+      ],
+      "answer": 4
+    },
+    {
+      "question": "클래스에서 인스턴스 자신을 가리키는 관례적인 이름은?",
+      "choices": [
+        "this",
+        "self",
+        "main",
+        "super"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "키와 값의 쌍을 저장하는 자료형은?",
+      "choices": [
+        "tuple",
+        "str",
+        "dict",
+        "bool"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "예외를 처리할 때 try와 함께 사용하는 키워드는?",
+      "choices": [
+        "except",
+        "elsewhere",
+        "catch",
+        "error"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Python에서 화면에 값을 출력하는 함수는?",
+      "choices": [
+        "print()",
+        "input()",
+        "len()",
+        "int()"
+      ],
+      "answer": 1
+    }
+  ],
+  "best_score": 7,
+  "games_played": 1
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+state.json
+state.json.tmp
+state.corrupt*.json
+practice-clone/
+artifacts/work/

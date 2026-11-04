@@ -18,7 +18,7 @@ foreach ($file in (Get-ChildItem -LiteralPath $logPath -Filter '*.txt' | Sort-Ob
         $form.StartPosition = 'CenterScreen'
         $form.BackColor = [System.Drawing.Color]::FromArgb(18, 24, 38)
         $label = New-Object System.Windows.Forms.Label
-        $label.Text = "Python 기초 퀴즈  /  Gonyak004/KDJ-E1-2`r`n실제 실행 원문: artifacts/logs/$($file.Name)  ·  $($page + 1)/$pageCount"
+        $label.Text = "세계사 타임투어  /  Gonyak004/KDJ-E1-2`r`n실제 실행 원문: artifacts/logs/$($file.Name)  ·  $($page + 1)/$pageCount"
         $label.ForeColor = [System.Drawing.Color]::FromArgb(125, 211, 252)
         $label.Font = New-Object System.Drawing.Font('Malgun Gothic', 12)
         $label.SetBounds(24, 16, 1130, 60)
@@ -28,7 +28,7 @@ foreach ($file in (Get-ChildItem -LiteralPath $logPath -Filter '*.txt' | Sort-Ob
         $box.BorderStyle = 'None'
         $box.BackColor = $form.BackColor
         $box.ForeColor = [System.Drawing.Color]::FromArgb(235, 240, 248)
-        $box.Font = New-Object System.Drawing.Font('Malgun Gothic', 11)
+        $box.Font = New-Object System.Drawing.Font('Consolas', 11)
         $box.WordWrap = $false
         $box.SetBounds(24, 88, 1130, 710)
         $first = $page * $pageSize

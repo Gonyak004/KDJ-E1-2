@@ -10,6 +10,8 @@ from game import QuizGame
 from inputs import read_number
 from quiz import Quiz
 from storage import StateStore
+from defaults import default_quizzes, legacy_default_quizzes, party_default_quizzes
+from ui import Console, text_width
 
 
 class GameTests(unittest.TestCase):
@@ -125,6 +127,47 @@ class GameTests(unittest.TestCase):
                 Quiz("문제", ["a", "b", "c", "d"], answer)
         with self.assertRaises(ValueError):
             Quiz("", ["a"] * 4, 1)
+
+    def test_legacy_theme_migration_preserves_custom_quiz_and_backup(self):
+        custom = Quiz("내가 만든 문제", ["a", "b", "c", "d"], 2)
+        StateStore(self.path).save(legacy_default_quizzes() + [custom], 5, 3)
+        original = self.path.read_bytes()
+        game = self.game()
+        self.assertEqual(game.quizzes[0].question, default_quizzes()[0].question)
+        self.assertEqual(game.quizzes[-1].to_dict(), custom.to_dict())
+        self.assertEqual((game.best_score, game.games_played), (0, 0))
+        backups = list(self.path.parent.glob("state.before-theme-*.json"))
+        self.assertEqual(len(backups), 1)
+        self.assertEqual(backups[0].read_bytes(), original)
+        game.save()
+        self.game()
+        self.assertEqual(len(list(self.path.parent.glob("state.before-theme-*.json"))), 1)
+
+    def test_failed_migration_backup_keeps_previous_game(self):
+        StateStore(self.path).save(legacy_default_quizzes(), 5, 3)
+        with patch("storage.shutil.copy2", side_effect=OSError("쓰기 거부")):
+            game = self.game()
+        self.assertEqual(game.quizzes[0].question, legacy_default_quizzes()[0].question)
+        self.assertEqual((game.best_score, game.games_played), (5, 3))
+
+    def test_history_theme_keeps_existing_history_score(self):
+        StateStore(self.path).save(default_quizzes(), 6, 2)
+        game = self.game()
+        self.assertEqual((game.best_score, game.games_played), (6, 2))
+        self.assertTrue(all(q.explanation for q in game.quizzes))
+
+    def test_party_quizzes_migrate_to_history(self):
+        StateStore(self.path).save(party_default_quizzes(), 4, 2)
+        game = self.game()
+        self.assertEqual(game.quizzes[0].question, default_quizzes()[0].question)
+        self.assertEqual((game.best_score, game.games_played), (0, 0))
+
+    def test_card_wraps_long_korean_text(self):
+        console = Console()
+        console.color = False
+        console.card("긴 문제", ["가나다라마바사" * 30, "한글과 English 함께"])
+        lines = self.output.getvalue().strip().splitlines()
+        self.assertTrue(all(text_width(line) == 64 for line in lines))
 
 
 if __name__ == "__main__":

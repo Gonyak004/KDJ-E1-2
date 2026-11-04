@@ -2,7 +2,8 @@
 
 
 def main():
-    print("Python 기초 퀴즈 게임")
+    from game import QuizGame
+    QuizGame().run()
 
 
 if __name__ == "__main__":

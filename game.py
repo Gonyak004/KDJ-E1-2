@@ -33,7 +33,7 @@ class QuizGame:
         streak = 0
         best_streak = 0
         self.console.card("READY?  /  시간 여행 출발", [
-            f"총 {len(self.quizzes)}문제 · 정답 하나에 1점",
+            f"총 {len(self.quizzes)}문제 / 정답 하나에 1점",
             "보기 1~4 중 하나를 고르세요. 해설로 시대의 맥락도 확인!",
         ], "95")
         for index, quiz in enumerate(self.quizzes, 1):

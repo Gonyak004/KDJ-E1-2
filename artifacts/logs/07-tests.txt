@@ -5,9 +5,13 @@ test_atomic_write_keeps_previous_data_on_failure (test_game.GameTests.test_atomi
 test_card_wraps_long_korean_text (test_game.GameTests.test_card_wraps_long_korean_text) ... ok
 test_corrupt_and_invalid_state (test_game.GameTests.test_corrupt_and_invalid_state) ... ok
 test_default_questions (test_game.GameTests.test_default_questions) ... ok
+test_delete_can_cancel_at_both_steps (test_game.GameTests.test_delete_can_cancel_at_both_steps) ... ok
+test_delete_last_question_and_empty_list (test_game.GameTests.test_delete_last_question_and_empty_list) ... ok
+test_delete_persists_and_preserves_historical_score (test_game.GameTests.test_delete_persists_and_preserves_historical_score) ... ok
 test_empty_quizzes (test_game.GameTests.test_empty_quizzes) ... ok
 test_failed_migration_backup_keeps_previous_game (test_game.GameTests.test_failed_migration_backup_keeps_previous_game) ... ok
 test_history_theme_keeps_existing_history_score (test_game.GameTests.test_history_theme_keeps_existing_history_score) ... ok
+test_interrupt_delete_confirmation_keeps_question (test_game.GameTests.test_interrupt_delete_confirmation_keeps_question) ... ok
 test_interrupted_inputs_save (test_game.GameTests.test_interrupted_inputs_save) ... ok
 test_invalid_encoding (test_game.GameTests.test_invalid_encoding) ... ok
 test_legacy_theme_migration_preserves_custom_quiz_and_backup (test_game.GameTests.test_legacy_theme_migration_preserves_custom_quiz_and_backup) ... ok
@@ -21,6 +25,6 @@ test_score_persistence_and_lower_score (test_game.GameTests.test_score_persisten
 test_wrong_answers (test_game.GameTests.test_wrong_answers) ... ok
 
 ----------------------------------------------------------------------
-Ran 19 tests in 0.086s
+Ran 23 tests in 0.102s
 
 OK

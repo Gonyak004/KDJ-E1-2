@@ -28,7 +28,7 @@ foreach ($file in (Get-ChildItem -LiteralPath $logPath -Filter '*.txt' | Sort-Ob
         $box.BorderStyle = 'None'
         $box.BackColor = $form.BackColor
         $box.ForeColor = [System.Drawing.Color]::FromArgb(235, 240, 248)
-        $box.Font = New-Object System.Drawing.Font('Consolas', 11)
+        $box.Font = New-Object System.Drawing.Font('돋움체', 11)
         $box.WordWrap = $false
         $box.SetBounds(24, 88, 1130, 710)
         $first = $page * $pageSize

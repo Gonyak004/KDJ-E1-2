@@ -107,7 +107,7 @@ py main.py
 
 #### 자동 테스트
 
-프로젝트 루트에서 실행합니다.
+프로젝트 루트에서 실행.
 
 ```powershell
 py -m unittest discover -s tests -v
@@ -134,7 +134,7 @@ clone/pull 실습은 기존 작업 폴더 안의 별도 복제본 `practice-clon
 git clone https://github.com/Gonyak004/KDJ-E1-2 practice-clone
 # 복제본에 docs/git-practice.txt 추가
 git -C practice-clone add docs/git-practice.txt
-git -C practice-clone commit -m "Docs: 복제한 저장소에서 Git 동기화 실습 기록 추가"
+git -C practice-clone commit -m "Docs: 복제한 저장소에서 Git 기록"
 git -C practice-clone push origin main
 git pull --ff-only origin main
 git rev-parse HEAD
@@ -265,13 +265,13 @@ UTF-8로 한글을 그대로 저장합니다. 먼저 `state.json.tmp`에 쓴 뒤
 
 ##### 개발 환경 확인
 
-> Python 3.15.2, Git 버전, 작성자 Gonyak004와 본인 저장소의 fetch/push 주소를 확인했습니다.
+> Python 3.15.2, Git 버전, 본인 저장소의 fetch/push 주소입니다.
 
 ![개발 환경 확인](artifacts/screenshots/06-environment-01.png)
 
 ##### 메뉴 및 잘못된 입력 처리
 
-> 메뉴 1~6과 빈 입력, abc, 범위 밖 번호 9에 대한 안내를 확인했습니다.
+> 메뉴 1~6과 빈 입력, abc, 범위 밖 번호 9에 대한 안내를 확인 할 수 있습니다.
 
 ![메뉴 및 입력 검증](artifacts/screenshots/01-menu-validation-01.png)
 
@@ -285,7 +285,7 @@ UTF-8로 한글을 그대로 저장합니다. 먼저 `state.json.tmp`에 쓴 뒤
 
 ##### 재실행 후 퀴즈 목록
 
-> 프로그램을 다시 실행해 목록 8개를 확인했습니다. 기본 문제에 더해 직접 등록한 올림픽 문제가 8번으로 남아 있습니다.
+> 프로그램을 다시 실행해 목록 8개를 확인했습니다. 기본 문제에 더해 직접 등록한 올림픽 문제가 8번으로 남은것을 확인 할 수 있습니다.
 
 ![재실행 후 퀴즈 목록](artifacts/screenshots/03-list-restart-01.png)
 
@@ -293,13 +293,13 @@ UTF-8로 한글을 그대로 저장합니다. 먼저 `state.json.tmp`에 쓴 뒤
 
 ##### 문제 풀이와 해설
 
-> 카드형 문제, 정답 안내, 해설 및 연속 정답 표시를 확인했습니다.
+> 카드형 문제, 정답 안내, 해설 및 연속 정답 표시를 확인 할 수 있습니다.
 
 ![퀴즈 풀이 및 해설](artifacts/screenshots/04-play-02.png)
 
 ##### 오답 및 최종 결과
 
-> 마지막 문제는 오답으로 입력했습니다. 총 8문제 중 7문제 정답, 정답률 88%, 최다 연속 정답 7개와 ‘베테랑 탐험가’ 등급을 확인했습니다.
+> 마지막 문제는 오답으로 입력하였고. 총 8문제 중 7문제 정답, 정답률 88%, 최다 연속 정답 7개와 ‘베테랑 탐험가’ 등급을 확인 할 수 있습니다.
 
 ![퀴즈 풀이 결과](artifacts/screenshots/04-play-06.png)
 
@@ -311,7 +311,7 @@ UTF-8로 한글을 그대로 저장합니다. 먼저 `state.json.tmp`에 쓴 뒤
 
 ##### 문제 삭제 및 재실행 확인
 
-> 등록한 8번 올림픽 문제를 선택하고 삭제를 확인했습니다. 삭제 후 문제 수가 7개가 되었으며, 다시 실행해도 7개 목록과 최고 점수 7개 정답이 유지되었습니다.
+> 등록한 8번 올림픽 문제를 선택하고 삭제를 확인했습니다. 삭제 후 문제 수가 7개가 되었으며, 다시 실행해도 7개 목록과 최고 점수 7개 정답이 유지되어있습니다.
 
 ![문제 삭제 확인 및 저장](artifacts/screenshots/10-delete-quiz-02.png)
 
@@ -321,7 +321,7 @@ UTF-8로 한글을 그대로 저장합니다. 먼저 `state.json.tmp`에 쓴 뒤
 
 ##### Git 커밋 및 브랜치 병합
 
-> 기능별 커밋과 퀴즈 풀이 브랜치의 병합 그래프를 확인했습니다. 이 화면은 증빙 수집 당시 기록이며, README 등 이후 커밋은 현재 Git 이력에서 확인합니다.
+> 기능별 커밋과 퀴즈 풀이 브랜치의 병합 그래프를 확인했습니다. 이 화면은 증빙 수집 당시 기록이며, README 등 이후 커밋은 현재 Git 이력에서 확인 할 수 있습니다.
 
 ![Git 커밋 그래프](artifacts/screenshots/08-git-graph-01.png)
 
@@ -333,13 +333,13 @@ UTF-8로 한글을 그대로 저장합니다. 먼저 `state.json.tmp`에 쓴 뒤
 
 ##### 자동 테스트
 
-> 테스트 결과의 `Ran 23 tests`와 `OK`를 확인했습니다.
+> 테스트 결과의 `Ran 23 tests`와 `OK`를 확인 할 수 있습니다.
 
 ![자동 테스트 결과](artifacts/screenshots/07-tests-01.png)
 
 #### 증빙 재수집
 
-프로젝트 루트에서 다음 명령으로 로그와 캡처를 갱신할 수 있습니다. 캡처 스크립트는 Windows 전용이며 실행 시 기록 뷰어 창이 잠시 표시됩니다.
+프로젝트 루트에서 다음 명령으로 로그와 캡처를 갱신할 수 있으며. 캡처 스크립트는 Windows 전용이며 실행 시 기록 뷰어 창이 잠시 표시됩니다.
 
 ```powershell
 py scripts/collect_evidence.py
